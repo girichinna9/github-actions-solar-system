@@ -58,7 +58,7 @@ jobs:
         retention-days: 5
     Docker:
       name: Containerization 
-      needs: [unit-testing, code-coverage]
+      needs: [unit-testing, code-coverage] 
       permissions:
           # contents: read 
           packages: write
