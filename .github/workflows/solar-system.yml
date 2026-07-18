@@ -56,17 +56,30 @@ jobs:
         name: Code-Coverage-Result
         path: coverage
         retention-days: 5
-    docker:
+    Docker:
+      name: Containerization
+      needs: [unit-testing, code-coverage]
+      permissions:
+          # contents: read 
+          packages: write
       runs-on: ubuntu-latest
-      needs: [unit-testing,code-coverage]
+      steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-      - name: GHCR Login
+
+      - name: Dockerhub login 
+        uses: docker/login-action@v2.2.0
+        with:
+          username: ${{ vars.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: GHCR login 
         uses: docker/login-action@v2.2.0
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
+          
       - name: Container Registry Push
         uses: docker/build-push-action@v4
         with:
