@@ -22,7 +22,7 @@ jobs:
           uses: actions/cache@v4
           with:
             path: ~/.npm
-            key: ${{ runneros }}-node-${{ hashfiles('package-log.json') }}
+            key: ${{ runner.os }}-node-${{ hashfiles('package-log.json') }}
 
         - name: Setup NodeJS Version
           uses: actions/setup-node@v4
