@@ -76,11 +76,11 @@ jobs:
           username: ${{ vars.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: GHCR login 
-        uses: docker/login-action@v2.2.0
+      - name: GHCR login
+        uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: girichinna9
+          username: ${{ github.actor }}
           password: ${{ secrets.GHCR_TOKEN }}
 
       - name: Container Registry Push
