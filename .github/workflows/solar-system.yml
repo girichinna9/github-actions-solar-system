@@ -14,6 +14,9 @@
     unit-testing:
       name: Unit Testing
       runs-on: ubuntu-latest
+      permissions:
+        contents: read
+        packages: write
       steps:
         - name: Checkout Repository
           uses: actions/checkout@v4
@@ -79,9 +82,6 @@
       name: dev-deploy
       needs: docker
       runs-on: ubuntu-latest
-      permissions:
-        contents: read
-        packages: write
       environment: development
 
       steps:
