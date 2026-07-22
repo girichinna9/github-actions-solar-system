@@ -84,6 +84,8 @@
       steps:
       - name: install the kubernetes cluster
         uses: helm/kind-action@v1
+
+      - name: config Kubectl
         run: |
           sleep 60
           kubectl -n kube-system get pod
