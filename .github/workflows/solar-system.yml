@@ -78,10 +78,10 @@
     dev-deploy:
       name: dev-deploy
       needs: docker
+      runs-on: ubuntu-latest
       permissions:
         contents: read
         packages: write
-      runs-on: ubuntu-latest
       environment: development
 
       steps:
