@@ -95,9 +95,9 @@
           set +e
           REPO_OWNER_LC="${GITHUB_REPOSITORY_OWNER,,}"
           kubectl run solar --image ghcr.io/${REPO_OWNER_LC}/solar-system:${{ github.sha }} \
-          --env MONGO_URI=${{ env.MONGO_URI}} \
-          --env MONGO_USERNAME=${{ env.MONGO_USERNAME}} \
-          --env MONGO_PASSWORD=${{ env.MONGO_PASSWORD}}
+          --env MONGO_URI=${{ vars.MONGO_URI}} \
+          --env MONGO_USERNAME=${{ vars.MONGO_USERNAME}} \
+          --env MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD}}
           set -e
           echo "kubectl returned $?"
           kubectl -n default get pod
