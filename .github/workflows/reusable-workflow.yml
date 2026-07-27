@@ -14,7 +14,12 @@ jobs:
   integration-test:
     runs-on: ubuntu-latest
     steps:
-
+      - name: Get ingress URL
+        id: ingress
+        run: |
+         URL=$(kubectl get ingress solar-system \
+         -o jsonpath='{.spec.rules[0].host}')
+         echo "url=$URL" >> $GITHUB_OUTPUT
       - name: Debug URL
         run: |
          echo "URL=${{ inputs.ingress-url }}"
