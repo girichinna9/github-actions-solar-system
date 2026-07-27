@@ -87,6 +87,8 @@
       needs: docker
       runs-on: ubuntu-latest
       environment: development
+      outputs:
+       ingress-url: ${{ steps.ingress.outputs.url }}
 
       steps:
       - name: install the kubernetes cluster
