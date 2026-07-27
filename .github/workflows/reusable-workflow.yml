@@ -6,6 +6,10 @@ on:
           description: Provide the Ingress URL
           required: true
           type: string
+    outputs:
+      ingress-url:
+        description: Application Ingress URL
+        value: ${{ jobs.integration-test.outputs.ingress-url }}
 jobs:
   integration-test:
     runs-on: ubuntu-latest
