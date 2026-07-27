@@ -104,6 +104,7 @@
           sleep 10
 
     Integration-test:
+      needs: dev-deploy
       uses: ./.github/workflows/reusable-workflow.yml
-      
+
 
