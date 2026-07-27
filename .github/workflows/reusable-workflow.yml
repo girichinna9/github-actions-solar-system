@@ -14,6 +14,10 @@ jobs:
   integration-test:
     runs-on: ubuntu-latest
     steps:
+
+      - name: Debug URL
+        run: |
+         echo "URL=${{ inputs.ingress-url }}"
       - env:
           URL: ${{ inputs.ingress-url }}
         run: |
