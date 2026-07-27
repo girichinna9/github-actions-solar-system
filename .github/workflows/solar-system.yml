@@ -108,7 +108,12 @@
           echo "kubectl returned $?"
           kubectl -n default get pod
           sleep 10
-
+      - name: Check Kubernetes resources
+        run: |
+          kubectl get pods -A
+          kubectl get deployments -A
+          kubectl get services -A
+          kubectl get ingress -A
       - name: Get ingress URL
         id: ingress
         run: |
