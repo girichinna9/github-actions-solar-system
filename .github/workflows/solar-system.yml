@@ -97,6 +97,9 @@
       - name: config Kubectl
         run: |
           sleep 60
+          kubectl apply -f kubernetes/deployment.yaml
+          kubectl apply -f kubernetes/service.yaml
+          kubectl apply -f kubernetes/ingress.yaml
           kubectl -n kube-system get pod
           set +e 
           REPO_OWNER_LC="${GITHUB_REPOSITORY_OWNER,,}"
